@@ -1,0 +1,44 @@
+<header class="bg-header flex justify-center items-center">
+    <div class="flex justify-center items-center">
+        <h2 class="text-3xl text-white font-bold tracking-widest custom-heading">WELCOME TO MONEYMATE</h2>
+    </div>
+</header>
+<nav class="flex justify-center items-center w-full h-24 bg-nav">
+    <div class="flex justify-center items-center p-20">
+        <a routerLink="/dashboard" class="text-lg tracking-wider cursor-pointer font-medium p-2 text-white hover:border-dotted hover:border-white hover:bg-blue-950 hover:shadow-xl hover:rounded-lg hover:font-semibold hover:p-2">Dashboad</a>
+        <a routerLink="/add-expenses" class="text-lg tracking-wider cursor-pointer font-medium p-2 text-white hover:border-dotted hover:border-white hover:bg-blue-950 hover:shadow-xl hover:rounded-lg hover:font-semibold hover:p-2">add expenses</a>
+    </div>
+    <div class="ms-auto p-20">
+        <a routerLink="/" class="text-lg tracking-wider cursor-pointer font-medium p-2 text-white hover:border-dotted hover:border-white hover:bg-blue-950 hover:shadow-xl hover:rounded-lg hover:font-semibold hover:p-2">logout</a>
+    </div>
+
+</nav>
+<main class="flex justify-center items-center">
+    <div class="flex justify-between border main-inside mt-5 mb-5 p-5">
+        <div class=" w-[60%] flex justify-center p-5">
+            <div class="border w-[40rem] rounded-lg shadow-sm flex justify-center">
+                <div class="rounded-0 h-14 ">
+                    <h2 class="text-sm  text-center text-blue-900 mt-5 font-bold">ADD NEW EXPENSES</h2>
+                    <form class="  mt-8 w-[35rem]" [formGroup]="addExpense" (ngSubmit)="addNewExpenses()">
+                        <div class="mb-6 ">
+                        <input type="number" id="amount" formControlName="amountSpend" class="bg-gray-50 border h-14 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hover:border-purple-900" placeholder="amount in Tsh" required />
+                        </div>
+                        <div class="mb-6">
+                        <input type="text" id="service" formControlName="serviceOrStaffSpend" class="bg-gray-50 h-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hover:border-purple-900" required placeholder="item's or service spent" />
+                        </div>
+                        <div class="mb-6">
+                            <textarea name="reason" formControlName="reasonOfSpend" id="" cols="58" rows="6" placeholder="reason for that spent" class="w-full rounded-lg border hover:border-purple-900"></textarea>
+                            </div>
+                        <div class="flex justify-center gap-20 items-center w-full mb-4">
+                            <button type="submit" class="text-white w-28 bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">CLEAR</button>
+                            <button type="submit" [disabled]="!addExpense.valid" class="text-white w-28 bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SAVE</button>
+                        </div>
+                    </form>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
