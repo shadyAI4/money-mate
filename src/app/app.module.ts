@@ -10,6 +10,7 @@ import { AddNewExpenseComponent } from './main/add-new-expense/add-new-expense.c
 import { SharedModule } from './shared/shared.module';
 
 import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NotFoundComponent } from './error/not-found/not-found.component';
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
+import { MaterialModule } from './material.module';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -47,11 +49,14 @@ import { MatInputModule } from '@angular/material/input';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule,
+    // MatTableModule,
+    // MatSortModule,
     MatFormFieldModule,
     MatInputModule,
     ApolloModule,
+    MaterialModule,
     NgxPermissionsModule.forRoot(),
+    NgHttpLoaderModule.forRoot(),
     ToastrModule.forRoot(),
     EffectsModule.forRoot([
       UserExpensesEffects,
@@ -60,7 +65,7 @@ import { MatInputModule } from '@angular/material/input';
     // MatTableModule,
   ],
   exports: [
-    SharedModule,
+    // SharedModule,
     FormsModule,
 
   ],

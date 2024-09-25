@@ -1,5 +1,5 @@
-<header class="bg-header flex justify-center items-center">
-    <div class="flex justify-center items-center">
+<!-- <header class="bg-header w-[100vw]">
+    <div class="">
         <h2 class="text-3xl text-white font-bold tracking-widest custom-heading">WELCOME TO MONEYMATE</h2>
     </div>
 </header>
@@ -12,14 +12,48 @@
         <a routerLink="/" class="text-lg tracking-wider cursor-pointer font-medium p-2 text-white hover:border-dotted hover:border-white hover:bg-blue-950 hover:shadow-xl hover:rounded-lg hover:font-semibold hover:p-2">logout</a>
     </div>
 
+</nav> -->
+
+
+<nav class="bg-blue-950 border-gray-200 dark:bg-gray-900">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <a routerLink="/dashboard" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white tracking-widest dark:text-white">SpendSmart</span>
+        </a>
+        <div class="flex items-center space-x-6 rtl:space-x-reverse">
+            <a routerLink="/dashboard" class="text-sm  dark:text-white text-white hover:underline">shadrack kajigili</a>
+            <a routerLink="/" class="text-sm  text-white hover:underline">user</a>
+        </div>
+    </div>
 </nav>
-<main class="flex justify-center items-center">
-    <div class="flex justify-between border main-inside mt-5 mb-5 p-5">
-        <div class=" w-[60%] flex justify-center p-5">
-            <div class="border w-[40rem] rounded-lg shadow-sm flex justify-center">
-                <div class="rounded-0 h-14 ">
+<nav class="bg-blue-50 dark:bg-gray-700">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
+        <div class="flex justify-center items-center">
+            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                <li>
+                    <a routerLink="/dashboard" class="text-gray-900 dark:text-white hover:underline text-sm font-semibold" aria-current="page">Cash Dashboard</a>
+                </li>
+                <li>
+                    <a routerLink="/add-expenses" class="text-gray-900 dark:text-white hover:underline text-sm font-semibold">New Expenses</a>
+                </li>
+                <!-- <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
+                </li>
+                <li>
+                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Features</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="flex ">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-10">
+        <div class="w-[100%]">
+            <div class="rounded-lg">
+                <div class="rounded-0">
                     <h2 class="text-sm  text-center text-blue-900 mt-5 font-bold">ADD NEW EXPENSES</h2>
-                    <form class="  mt-8 w-[35rem]" [formGroup]="addExpense" (ngSubmit)="addNewExpenses()">
+                    <form class="  mt-8 " [formGroup]="addExpense" (ngSubmit)="addNewExpenses()">
                         <div class="mb-6 ">
                         <input type="number" id="amount" formControlName="amountSpend" class="bg-gray-50 border h-14 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hover:border-purple-900" placeholder="amount in Tsh" required />
                         </div>

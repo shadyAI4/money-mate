@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as SecureLS from 'secure-ls';
+import * as SecureLS from 'secure-ls';//localstorage-slim
 
 @Injectable({
   providedIn: 'root',
