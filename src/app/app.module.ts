@@ -32,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MaterialModule } from './material.module';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     MatFormFieldModule,
     MatInputModule,
     ApolloModule,
+    CommonModule,
     MaterialModule,
     NgxPermissionsModule.forRoot(),
     NgHttpLoaderModule.forRoot(),
@@ -96,7 +98,7 @@ export class AppModule {
     httpLink: HttpLink,
   ){
     apollo.create({
-      link:httpLink.create({ uri: 'http://localhost:5000/api'}),
+      link:httpLink.create({ uri: 'http://localhost:8000/api'}),
       cache: new InMemoryCache()
     });
   }

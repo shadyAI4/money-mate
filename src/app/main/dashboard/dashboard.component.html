@@ -1,4 +1,4 @@
-<nav class="bg-blue-950 border-gray-200 dark:bg-gray-900">
+<!-- <nav class="bg-blue-950 border-gray-200 dark:bg-gray-900">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a routerLink="/dashboard" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-sm font-semibold whitespace-nowrap text-white tracking-widest dark:text-white">SpendSmart</span>
@@ -8,16 +8,41 @@
             <a routerLink="/" class="text-sm  text-white hover:underline">user</a>
         </div>
     </div>
-</nav>
-<nav class="bg-blue-50 dark:bg-gray-700">
+</nav> -->
+
+
+<nav class="bg-gray-900 border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="../../../assets/images/money.png" class="h-10" alt="Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Money-Mate</span>
+    </a>
+    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse py-2">
+        <button type="button"   class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          <span class="sr-only">Open user menu</span>
+          <img (click)="openMenu" class="w-8 h-8 rounded-full" src="../../../assets/images/user.jpg" alt="user photo">
+        </button>
+        <!-- Dropdown menu -->
+        <div v-if="isopen"  class="z-50 hidden  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+          <div class="px-4 py-3">
+            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+          </div>
+        </div>
+    </div>
+
+    </div>
+  </nav>
+  
+<nav class="bg-gray-800 dark:bg-gray-900 border-t border-t-stone-600">
     <div class="max-w-screen-xl px-4 py-3 mx-auto">
         <div class="flex justify-center items-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                 <li>
-                    <a routerLink="/dashboard" class="text-gray-900 dark:text-white hover:underline text-sm font-semibold" aria-current="page">Cash Dashboard</a>
+                    <a routerLink="/dashboard" class="text-gray-900 dark:text-white hover:underline text-lg font-semibold" aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a routerLink="/add-expenses" class="text-gray-900 dark:text-white hover:underline text-sm font-semibold">New Expenses</a>
+                    <a routerLink="/add-expenses" class="text-gray-900 dark:text-white hover:underline text-lg font-semibold">New Expenses</a>
                 </li>
 
             </ul>
@@ -28,74 +53,153 @@
 
 <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 sm:grid-cols-1">
     <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 p-5">
-        <div class="bg-white border border-purple-200 shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-            <div class="flex items-center">
+        <div class="bg-white border border-stone-200 shadow-md rounded-lg p-4 sm:p-6 xl:p-8 ">
+            <div class="flex items-center justify-between">
                 <div class="flex-shrink-0">
-                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData.totalAmountToday }}</span>
+                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData?.totalAmountToday }}</span>
                     <h3 class="text-sm font-normal text-gray-500">Today Expenses</h3>
+                </div>
+                <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                    54.6%
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg>
                 </div>
             </div>
         </div>
-        <div class="bg-white border border-indigo-200 shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        <div class="bg-white border border-stone-200 shadow-md rounded-lg p-4 sm:p-6 xl:p-8 ">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData.totalAmountThisWeek }}</span>
+                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData?.totalAmountThisWeek }}</span>
                     <h3 class="text-sm font-normal text-gray-500">This Week Expenses</h3>
                 </div>
-                <!-- <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
                     14.6%
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </div> -->
+                </div>
             </div>
         </div>
-        <div class="bg-white border border-blue-200 shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        <div class="bg-white border border-stone-200 shadow-md rounded-lg p-4 sm:p-6 xl:p-8 ">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData.totalAmountThisMonth }}</span>
+                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData?.totalAmountThisMonth }}</span>
                     <h3 class="text-sm font-normal text-gray-500">This Month Expenses</h3>
                 </div>
-                <!-- <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                <div class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
                     32.9%
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </div> -->
+                </div>
             </div>
         </div>
-        <div class="bg-white border border-purple-200 shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        <div class="bg-white border border-stone-200 shadow-md rounded-lg p-4 sm:p-6 xl:p-8 ">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData.totalAmountThisYear }}</span>
+                    <span class="text-xl sm:text-lg leading-none font-bold text-gray-900">Tsh : {{ dashboardData?.totalAmountThisYear }}</span>
                     <h3 class="text-sm font-normal text-gray-500">This Year Expenses</h3>
                 </div>
-                <!-- <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
+                <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
                     -2.7%
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="grid lg:grid-cols-2  md:grid-cols-1 xl:grid-cols-2 sm:grid-cols-1 gap-2 p-5">
+    <div class="mt-4 w-full  grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow">
+        <div class="flex justify-center mb-4">
+            <h2 class="text-md font-semibold bg-stone-100 w-full text-stone-600 h-10 border-b flex justify-center items-center p-2">Maximu Spends Money Per Month </h2>
+        </div>
+        <div class="flex justify-end items-center px-8">
+            <select id="countries" class="bg-stone-100 border border-stone-100 text-sm text-stone-600 rounded-lg  block  p-2.5  ">
+                    <option selected>Choose Year</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+        <div class="px-8 mt-5">
+          <!-- <app-apex-chart [amount]='amount' [month]='month' ></app-apex-chart> -->
+          <div id="chart" class="">
+            <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [yaxis]="chartOptions.yaxis"
+            [xaxis]="chartOptions.xaxis"
+            [labels]="chartOptions.labels"
+            [stroke]="chartOptions.stroke"
+            [title]="chartOptions.title"
+            [dataLabels]="chartOptions.dataLabels"
+            [fill]="chartOptions.fill"
+            [tooltip]="chartOptions.tooltip"
+          ></apx-chart>
+        </div>
+        </div>
+    </div>
+    <div class="mt-4 w-full  grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow">
+        <div class="flex justify-center mb-4">
+            <h2 class="text-md font-semibold bg-stone-100 w-full text-stone-600 h-10 border-b flex justify-center items-center p-2">Trend of Money Spends Per Day </h2>
+        </div>
+        <div class="flex justify-end items-center gap-2 px-8">
+            <select id="countries" class="bg-stone-100 border border-stone-100 text-sm text-stone-600 rounded-lg  block  p-2.5  ">
+                    <option selected>Choose Month</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+            </select>
+            <select id="countries" class="bg-stone-100 border border-stone-100 text-sm text-stone-600 rounded-lg  block  p-2.5  ">
+                <option selected>Choose Year</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+        </select>
+        </div>
+        <div class="px-8 mt-5">
+          <!-- <app-apex-chart [amount]='amount' [month]='month' ></app-apex-chart> -->
+          <div id="chart" class="">
+            <apx-chart
+            [series]="chartOptions1.series"
+            [chart]="chartOptions1.chart"
+            [yaxis]="chartOptions1.yaxis"
+            [xaxis]="chartOptions1.xaxis"
+            [labels]="chartOptions1.labels"
+            [stroke]="chartOptions1.stroke"
+            [title]="chartOptions1.title"
+            [dataLabels]="chartOptions1.dataLabels"
+            [fill]="chartOptions1.fill"
+            [tooltip]="chartOptions1.tooltip"
+          ></apx-chart>
+        </div>
+        </div>
+    </div>
+</div>
 <div class="grid grid-cols-1  md:grid-cols-1 xl:grid-cols-2 sm:grid-cols-1 gap-2 p-5">
-        <div class="mt-4 w-full h-40 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
+        <div class="mt-4 w-full  grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
             <div class="flex justify-center p-2">
-                <h2 class="text-sm font-semibold bg-yellow-100 w-full text-yellow-600 h-10 border rounded-lg flex justify-center items-center p-2">Top 3 days on which you have spent a lot of money. </h2>
+                <h2 class="text-sm font-semibold bg-yellow-100 w-full text-yellow-600 h-10 border rounded-lg flex justify-center items-center p-2">Top 5 days on which you have spent a lot of money. </h2>
             </div>
             <div class="">
                 <div class="relative overflow-x-auto p-2">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-sm text-black uppercase bg-white border rounded-lg">
+                        <thead class="text-sm text-white uppercase bg-yellow-600 border rounded-lg">
                             <tr>
                                 <th scope="" class="px-6 py-3 text-sm">
                                     {{"Day"}}
@@ -103,79 +207,82 @@
                                 <th scope="col" class="px-6 py-3 text-sm">
                                     amount
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-sm">
-                                    Reason
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    
+                            <tr class="bg-white border" *ngFor="let spends of daysSPend; let i=index">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.date | date }}
                                 </th>
-                            </tr> -->
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.totalSpend }}
+                                </th>
+                        
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="mt-4 w-full h-40 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
+        <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
             <div class="flex justify-center p-2">
                 <h2 class="text-sm font-semibold bg-green-100 w-full text-green-600 h-10 border rounded-lg flex justify-center items-center p-2">Top 3 Months on which you have spent a lot of money. </h2>
             </div>
             <div class="">
                 <div class="relative overflow-x-auto p-2">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-sm text-black uppercase bg-white border rounded-lg">
+                        <thead class="text-sm text-white uppercase bg-green-800 border rounded-lg">
                             <tr>
                                 <th scope="" class="px-6 py-3 text-sm">
-                                    {{"Day"}}
+                                    {{"Month"}}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-sm">
                                     amount
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-sm">
-                                    Reason
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    
+                            <tr class="bg-white border" *ngFor="let spends of monthSPend; let i=index">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.month | date }}
                                 </th>
-                            </tr> -->
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.totalSpend }}
+                                </th>
+                        
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="mt-4 w-full h-40 grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
+        <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 border shadow-md">
             <div class="flex justify-center p-2">
                 <h2 class="text-sm font-semibold bg-blue-100 w-full text-blue-600 h-10 border rounded-lg flex justify-center items-center p-2">Top 3 Years on which you have spent a lot of money. </h2>
             </div>
             <div class="">
                 <div class="relative overflow-x-auto p-2">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-sm text-black uppercase bg-white border rounded-lg">
+                        <thead class="text-sm text-white uppercase bg-blue-800 border rounded-lg">
                             <tr>
                                 <th scope="" class="px-6 py-3 text-sm">
-                                    {{"Day"}}
+                                    {{"Year"}}
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-sm">
                                     amount
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-sm">
-                                    Reason
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    
+                            <tr class="bg-white border" *ngFor="let spends of yearSPend; let i=index">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.year | date }}
                                 </th>
-                            </tr> -->
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    {{ spends?.totalSpend }}
+                                </th>
+                        
+                            </tr>
                         </tbody>
                     </table>
                 </div>

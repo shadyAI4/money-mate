@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, Input, ViewChild, OnChanges, SimpleChanges   } from "@angular/core";
 
 import {
   ChartComponent,
@@ -30,7 +30,9 @@ export type ChartOptions = {
   styleUrls: ['./apex-chart.component.scss']
 })
 export class ApexChartComponent {
-
+  @Input() amount: any[]=[]
+  @Input() month: string[]=[]
+  
   @ViewChild("chart") chart: ChartComponent |any;
   public chartOptions: Partial<ChartOptions>;
 
@@ -40,16 +42,11 @@ export class ApexChartComponent {
         {
           name: "Website Blog",
           type: "column",
-          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+          data: this.amount // will be updated automaticalyy
         },
-        {
-          name: "Social Media",
-          type: "line",
-          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-        }
       ],
       chart: {
-        height: 350,
+        height: 450,
         type: "line"
       },
       // chart: {
@@ -57,46 +54,38 @@ export class ApexChartComponent {
       //   type: "bar"
       // },
       stroke: {
-        width: [0, 4]
-      },
-      title: {
-        text: "Traffic Sources"
+        width: [0, 10]
       },
       dataLabels: {
         enabled: true,
         enabledOnSeries: [1]
       },
-      labels: [
-        "01 Jan 2001",
-        "02 Jan 2001",
-        "03 Jan 2001",
-        "04 Jan 2001",
-        "05 Jan 2001",
-        "06 Jan 2001",
-        "07 Jan 2001",
-        "08 Jan 2001",
-        "09 Jan 2001",
-        "10 Jan 2001",
-        "11 Jan 2001",
-        "12 Jan 2001"
-      ],
-      xaxis: {
-        type: "datetime"
-      },
+      labels: this.month,
+ 
       yaxis: [
         {
           title: {
-            text: "Website Blog"
+            text: "Total Amount"
           }
         },
-        {
-          opposite: true,
-          title: {
-            text: "Social Media"
-          }
-        }
+
       ]
     };
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes["amount"] || changes["month"])
+       this.updateChanges()
+  }
+
+  updateChanges(){
+      this.chartOptions.series=[
+        {
+          name: "Total Amount",
+          type: "column",
+          data: this.amount // Use the @Input amount data
+        }
+      ]
+      this.chartOptions.labels = this.month;
+  }
 }
